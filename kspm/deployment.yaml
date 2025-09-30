@@ -4,6 +4,7 @@ metadata:
   name: security-playground
   namespace: security-playground
   labels:
+    student: bright_raccoon_18492
     app: app
 spec:
   replicas: 1
@@ -30,3 +31,4 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
+
