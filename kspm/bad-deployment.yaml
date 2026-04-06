@@ -16,10 +16,19 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:latest
+          image: nginx:1.29.0
+          resources:
+            requests:
+                cpu: "100m"
+                memory: "128Mi"
+            limits:
+                cpu: "250m"
+                memory: "256Mi"
           ports:
             - containerPort: 80
           securityContext:
-            runAsUser: 0
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
             allowPrivilegeEscalation: true
-            readOnlyRootFilesystem: false
+            readOnlyRootFilesystem: true
