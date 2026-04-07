@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insecure-nginx
+  labels:
+    app: insecure-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insecure-nginx
+  template:
+    metadata:
+      labels:
+        app: insecure-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          securityContext:
+            runAsUser: 0
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
