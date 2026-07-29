@@ -4,6 +4,7 @@ metadata:
   name: security-playground
   namespace: security-playground
   labels:
+    student: wise_orangutan_86824
     app: app
 spec:
   replicas: 1
@@ -28,5 +29,5 @@ spec:
         ports:
         - containerPort: 80
         securityContext:
-          allowPrivilegeEscalation: false
-          runAsUser: 0
+          readOnlyRootFilesystem: true
+
