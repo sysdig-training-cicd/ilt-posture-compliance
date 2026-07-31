@@ -16,10 +16,12 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:latest
+          image: nginx@1.29.0
           ports:
             - containerPort: 80
           securityContext:
-            runAsUser: 0
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000            
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
